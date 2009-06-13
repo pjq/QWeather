@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/widget33"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical">
+	<LinearLayout android:id="@+id/widget75"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		xmlns:android="http://schemas.android.com/apk/res/android">
+		<AutoCompleteTextView android:id="@+id/searchDialogInput"
+			android:layout_width="200px" android:layout_height="wrap_content"
+			android:textSize="18sp">
+		</AutoCompleteTextView>
+		<ImageButton android:id="@+id/searchDialogButton"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:background="@drawable/search"
+			android:text="">
+		</ImageButton>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/widget75"
+		android:layout_width="fill_parent" android:layout_height="60px"
+		android:padding="5px" xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical">
+	</LinearLayout>
+</LinearLayout>
+  

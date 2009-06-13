@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">QWeather</string>
+	<string name="QWeather">QWeather</string>
+	<string name="setting">Setting</string>
+	<string name="search">Search</string>
+	<string name="about">About</string>
+	<string name="aboutInfo">This programme is used to get the weather data
+		from google,then parse the data and display it in a properly way.First
+		you must go to [settings] to set the city name.
+	</string>
+	<string name="searchException">Can not find this city,please check it and try
+		again!</string>
+	<string name="searchDialog">Search Dialog</string>
+	<string name="noSettingsPrompt">Please set the city name in settings</string>
+	<string name="current">Current:</string>
+	<string name="faiedToGetImage">Failed to get Image!</string>
+	<string name="notSet">Not set!</string>
+	<string name="city1">City1</string>
+	<string name="city2">City2</string>
+	<string name="cityText">CityName</string>
+	<string name="windText">Wind</string>
+	<string name="humidityText">Humidity</string>
+	<string name="dateText">Date</string>
+	<string name="conditionText">Condition</string>
+	<string name="tempText">Temp</string>
+	<string name="searchingText">Searching:</string>
+	<string name="waitText">Please wait...</string>
+
+</resources>

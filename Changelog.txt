@@ -1,0 +1,11 @@
+@20090612
+Percy.Peng@qisda.com
+description:
+1.When search a city,but can't find it.Then you press on one day icon,the application will occur error because 
+it will get the data from the null pointer.So I change to that when can't find the data,don't pass the null value to the pointer.
+2.Auto save the image icon.If the icon can't be found in local,then get it from the Internet.
+
+@20090609
+Percy.Peng@qisda.com
+description:
+Add the ProgressDialog when searching

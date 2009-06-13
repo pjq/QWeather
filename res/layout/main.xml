@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/mainLayout"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical">
+	<LinearLayout android:id="@+id/cityNameLayout"
+		android:layout_width="fill_parent" android:layout_height="45px"
+		xmlns:android="http://schemas.android.com/apk/res/android">
+		<Button android:id="@+id/button"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+		  	android:text="Next"   
+		  	android:background="@drawable/shape_4" 
+			>
+		</Button>
+		<ViewFlipper android:id="@+id/cityNameflipper"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:flipInterval="2000">
+			<TextView android:id="@+id/textViewCityName"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:gravity="center" android:text="@+string/cityText">
+			</TextView>
+		</ViewFlipper>   
+		<ProgressBar android:id="@+id/progressBar"
+			android:layout_width="40px" android:layout_height="fill_parent">
+		</ProgressBar>  
+	</LinearLayout> 
+	<LinearLayout android:id="@+id/mainInfoLayout"
+		android:layout_width="fill_parent" android:layout_height="200px"   
+  
+		xmlns:android="http://schemas.android.com/apk/res/android">
+		<LinearLayout android:id="@+id/weatherIconLayout"
+			android:layout_width="200px" android:layout_height="fill_parent"  
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:orientation="vertical">
+			<ImageView android:id="@+id/imageViewWeatherIcon"
+				android:layout_width="fill_parent" android:layout_height="fill_parent">
+			</ImageView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/weatherDetailLayout"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:orientation="vertical">
+			<LinearLayout android:id="@+id/weatherInfo"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				xmlns:android="http://schemas.android.com/apk/res/android"
+				android:background="@drawable/shape_5"
+				android:orientation="vertical">
+				<LinearLayout android:id="@+id/widget67"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					xmlns:android="http://schemas.android.com/apk/res/android"
+					android:orientation="vertical">
+					<TextView android:id="@+id/textViewDate" android:layout_width="fill_parent"
+						android:layout_height="fill_parent" android:text="@+string/dateText"
+						>
+					</TextView>
+				</LinearLayout>
+				<LinearLayout android:id="@+id/widget61"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					xmlns:android="http://schemas.android.com/apk/res/android"
+					android:orientation="vertical">
+					<TextView android:id="@+id/textViewCondition"
+						android:layout_width="fill_parent" android:layout_height="fill_parent"
+						android:text="@+string/conditionText">
+					</TextView>
+				</LinearLayout>
+				<LinearLayout android:id="@+id/widget63"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					xmlns:android="http://schemas.android.com/apk/res/android"
+					android:orientation="vertical">
+					<TextView android:id="@+id/textViewTemp"
+						android:layout_width="fill_parent" android:layout_height="fill_parent"
+						android:text="@+string/tempText">
+					</TextView>
+				</LinearLayout>
+				<LinearLayout android:id="@+id/widget65"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					xmlns:android="http://schemas.android.com/apk/res/android"
+					android:orientation="vertical">
+					<TextView android:id="@+id/textViewWind"
+						android:layout_width="fill_parent" android:layout_height="fill_parent"
+						android:text="@+string/windText">
+					</TextView>
+				</LinearLayout>
+				<LinearLayout android:id="@+id/widget66"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					xmlns:android="http://schemas.android.com/apk/res/android"
+					android:orientation="vertical">
+					<TextView android:id="@+id/textViewHumidity"
+						android:layout_width="fill_parent" android:layout_height="fill_parent"
+						android:text="@+string/humidityText">
+					</TextView>
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/widget40"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical">
+	</LinearLayout>
+	<LinearLayout android:id="@+id/textViewCurrentLayout"
+		android:layout_width="500px" android:layout_height="wrap_content"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical">
+
+		<ViewFlipper android:id="@+id/flipper"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:flipInterval="2000">
+
+			<TextView android:id="@+id/textViewCurrent"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:text="@+string/current">
+			</TextView>
+		</ViewFlipper>
+
+	</LinearLayout>
+	<LinearLayout android:id="@+id/galleryLayout"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical">
+		<Gallery android:id="@+id/gallery" android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+		</Gallery>
+	</LinearLayout>
+</LinearLayout>

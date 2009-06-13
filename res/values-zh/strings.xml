@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">QWeather</string>
+	<string name="QWeather">QWeather</string>
+	<string name="setting">设置</string>
+	<string name="search">搜索</string>
+	<string name="about">关于</string>
+	<string name="aboutInfo">这个程序是用来从google上得到天气数据，然后将它解析出来，并按照一定的方式显示出来！
+		使用之前，请先到[设置]里，设置好两个预设城市。
+	</string>
+	<string name="searchException">不能找到这个城市，可能不存在或者你输入错误了！
+	</string>
+	<string name="searchDialog">城市搜索</string>
+	<string name="noSettingsPrompt">请到[设置]里完成预设城市</string>
+	<string name="current">当前天气:</string>
+	<string name="faiedToGetImage">获取图片失败!</string>
+	<string name="notSet">您还没有进行设置!</string>
+	<string name="city1">城市1</string>
+	<string name="city2">城市2</string>
+
+	<string name="cityText">城市名称</string>
+	<string name="windText">风向，风速</string>
+	<string name="humidityText">温度</string>
+	<string name="dateText">日期</string>
+	<string name="conditionText">天气情况</string>
+	<string name="tempText">温度</string>
+	<string name="searchingText">查询:</string>
+	<string name="waitText">请稍等...</string>
+
+</resources>
