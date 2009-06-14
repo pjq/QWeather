@@ -1,4 +1,4 @@
-@20090612
+@20090613
 Percy.Peng@qisda.com
 Description:
 Use database to store the search history.And get the city list to set as the 
