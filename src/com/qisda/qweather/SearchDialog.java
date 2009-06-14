@@ -1,10 +1,17 @@
 package com.qisda.qweather;
 
+import java.util.ArrayList;
+
+import com.qisda.qweather.data.DBAdapter;
+
+import android.R.integer;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
@@ -19,6 +26,7 @@ public class SearchDialog extends Activity implements OnClickListener,
 	private AutoCompleteTextView	inputCity;
 	private ImageButton				searchButton;
 	public static final String		WEATHERDATA	= "WeatherData";
+	private ArrayList<String>		arrayList;
 
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -26,8 +34,23 @@ public class SearchDialog extends Activity implements OnClickListener,
 
 		setContentView(R.layout.searchdialog);
 		searchButton = (ImageButton) findViewById(R.id.searchDialogButton);
+		arrayList = new ArrayList<String>();
+		Cursor cursor = QWeather.dbAdapter.getAllItem();
+		int index = cursor.getColumnIndex(DBAdapter.CITY);
+		String city;
+		if (cursor.moveToFirst())
+		{
+			do
+			{
+				city = cursor.getString(index);
+				arrayList.add(city);
+				Log.i("SearchDialog", city);
+
+			} while (cursor.moveToNext());
+		}
+
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_dropdown_item_1line, CITYNAMES);
+				android.R.layout.simple_dropdown_item_1line, arrayList);
 		inputCity = (AutoCompleteTextView) findViewById(R.id.searchDialogInput);
 		inputCity.setAdapter(adapter);
 		inputCity.setOnKeyListener(this);

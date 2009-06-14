@@ -1,5 +1,6 @@
 package com.qisda.qweather;
 
+import com.qisda.qweather.data.DBAdapter;
 import com.qisda.qweather.data.WeatherData;
 import com.qisda.qweather.handle.*;
 import com.qisda.qweather.QWeather.*;
@@ -58,6 +59,7 @@ import org.xml.sax.*;
 import android.content.Intent;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -107,11 +109,13 @@ public class QWeather extends Activity implements OnItemClickListener,
 
 	private Animation			animUp;
 
-	public static boolean		bAtOffice	= true;
+	public static boolean		bAtOffice	= false;
 
 	private ProgressDialog		progressDialog;
 
 	public static final int		sleepTime	= 1500;
+
+	public static DBAdapter		dbAdapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -123,6 +127,9 @@ public class QWeather extends Activity implements OnItemClickListener,
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+
+		this.dbAdapter = new DBAdapter(this);
+		this.dbAdapter.open();
 
 		// Get widget and layout
 		nextButton = (Button) findViewById(R.id.button);
@@ -298,6 +305,7 @@ public class QWeather extends Activity implements OnItemClickListener,
 	public void onDestroy()
 	{
 		super.onDestroy();
+		dbAdapter.close();
 
 	}
 
@@ -503,6 +511,8 @@ public class QWeather extends Activity implements OnItemClickListener,
 							.getCurrentConditionsData().getIcon());
 				}
 				imageViewWeatherIcon.setImageBitmap(bitmap);
+
+				saveSearchedData();
 
 			} else
 			{
@@ -846,4 +856,107 @@ public class QWeather extends Activity implements OnItemClickListener,
 		return imageName;
 	}
 
+	public void saveSearchedData()
+	{
+		/*
+		 * CITY, POSTALCODE, LATITUDE, LONGITUDE, FORECASTDATE, CURRENTDATETIME,
+		 * UNITSYSTEM, CURRENTCONDITION, TEMPF, TEMPC, HUMIDITY, CURRENTICON,
+		 * WINDCONDITION, DAYOFWEEK1, LOWTEMP1, HIGHTEMP1, FOREICON1,
+		 * FORECONDITION1, DAYOFWEEK2, LOWTEMP2, HIGHTEMP2, FOREICON2,
+		 * FORECONDITION2, DAYOFWEEK3, LOWTEMP3, HIGHTEMP3, FOREICON3,
+		 * FORECONDITION1, DAYOFWEEK4, LOWTEMP4, HIGHTEMP4, FOREICON4,
+		 * FORECONDITION4
+		 */
+		String city = weatherData.getForecastInformationData().getCity();
+
+		Cursor cursor = dbAdapter.getItem(city);
+		if (null != cursor)
+		{
+			try
+			{
+				city = cursor.getString(cursor.getColumnIndex(DBAdapter.CITY));
+				return;
+			} catch (Exception e)
+			{
+				// TODO: handle exception
+				
+			}
+
+		}
+
+		ContentValues contentValues = new ContentValues();
+		contentValues.put(DBAdapter.CITY, weatherData
+				.getForecastInformationData().getCity());
+		contentValues.put(DBAdapter.POSTALCODE, weatherData
+				.getForecastInformationData().getPostalCode());
+		contentValues.put(DBAdapter.LATITUDE, weatherData
+				.getForecastInformationData().getLatitude());
+		contentValues.put(DBAdapter.LONGITUDE, weatherData
+				.getForecastInformationData().getLongitude());
+		contentValues.put(DBAdapter.FORECASTDATE, weatherData
+				.getForecastInformationData().getForecastDate());
+		contentValues.put(DBAdapter.CURRENTDATETIME, weatherData
+				.getForecastInformationData().getCurrentDateTime());
+		contentValues.put(DBAdapter.UNITSYSTEM, weatherData
+				.getForecastInformationData().getUnitSystem());
+		contentValues.put(DBAdapter.CURRENTCONDITION, weatherData
+				.getCurrentConditionsData().getCondition());
+		contentValues.put(DBAdapter.TEMPF, weatherData
+				.getCurrentConditionsData().getTempF());
+		contentValues.put(DBAdapter.TEMPC, weatherData
+				.getCurrentConditionsData().getTempC());
+		contentValues.put(DBAdapter.HUMIDITY, weatherData
+				.getCurrentConditionsData().getHumidity());
+		contentValues.put(DBAdapter.CURRENTICON, weatherData
+				.getCurrentConditionsData().getIcon());
+		contentValues.put(DBAdapter.WINDCONDITION, weatherData
+				.getCurrentConditionsData().getWindCondition());
+
+		contentValues.put(DBAdapter.DAYOFWEEK1, weatherData
+				.getForecastConditionsData().get(0).getDayOfWeek());
+		contentValues.put(DBAdapter.LOWTEMP1, weatherData
+				.getForecastConditionsData().get(0).getLowTemp());
+		contentValues.put(DBAdapter.HIGHTEMP1, weatherData
+				.getForecastConditionsData().get(0).getHighTemp());
+		contentValues.put(DBAdapter.FOREICON1, weatherData
+				.getForecastConditionsData().get(0).getIcon());
+		contentValues.put(DBAdapter.FORECONDITION1, weatherData
+				.getForecastConditionsData().get(0).getCondition());
+
+		contentValues.put(DBAdapter.DAYOFWEEK2, weatherData
+				.getForecastConditionsData().get(1).getDayOfWeek());
+		contentValues.put(DBAdapter.LOWTEMP2, weatherData
+				.getForecastConditionsData().get(1).getLowTemp());
+		contentValues.put(DBAdapter.HIGHTEMP2, weatherData
+				.getForecastConditionsData().get(1).getHighTemp());
+		contentValues.put(DBAdapter.FOREICON2, weatherData
+				.getForecastConditionsData().get(1).getIcon());
+		contentValues.put(DBAdapter.FORECONDITION2, weatherData
+				.getForecastConditionsData().get(1).getCondition());
+
+		contentValues.put(DBAdapter.DAYOFWEEK3, weatherData
+				.getForecastConditionsData().get(2).getDayOfWeek());
+		contentValues.put(DBAdapter.LOWTEMP3, weatherData
+				.getForecastConditionsData().get(2).getLowTemp());
+		contentValues.put(DBAdapter.HIGHTEMP3, weatherData
+				.getForecastConditionsData().get(2).getHighTemp());
+		contentValues.put(DBAdapter.FOREICON3, weatherData
+				.getForecastConditionsData().get(2).getIcon());
+		contentValues.put(DBAdapter.FORECONDITION3, weatherData
+				.getForecastConditionsData().get(2).getCondition());
+
+		contentValues.put(DBAdapter.DAYOFWEEK4, weatherData
+				.getForecastConditionsData().get(3).getDayOfWeek());
+		contentValues.put(DBAdapter.LOWTEMP4, weatherData
+				.getForecastConditionsData().get(3).getLowTemp());
+		contentValues.put(DBAdapter.HIGHTEMP4, weatherData
+				.getForecastConditionsData().get(3).getHighTemp());
+		contentValues.put(DBAdapter.FOREICON4, weatherData
+				.getForecastConditionsData().get(3).getIcon());
+		contentValues.put(DBAdapter.FORECONDITION4, weatherData
+				.getForecastConditionsData().get(3).getCondition());
+
+		dbAdapter.insertItem(contentValues);
+
+	}
 }
