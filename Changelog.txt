@@ -5,6 +5,8 @@ Description:
 1.Add SearchThread extends AsyncTask to get the data from the network while showing a ProgressDialog.
 2.Add synchronized(context),then the getting data thread do the work before
 running other code.
+3.Because the ProgressDialog will be displayed in a very shor time default,so
+I add a Thread to dismiss it after sleep for a time(1500ms).
 
 @20090702
 Percy.Peng@qisda.com
