@@ -1,6 +1,8 @@
 
 package com.qisda.qweather.handle;
 
+import android.util.Log;
+
 import com.qisda.qweather.*;
 import com.qisda.qweather.data.CurrentConditionsData;
 import com.qisda.qweather.data.ForecastConditionsData;
@@ -128,6 +130,8 @@ public class HandleParseXML extends DefaultHandler {
             this.in_current_conditions = false;
         } else if (localName.equals("forecast_conditions")) {
             this.in_forecast_conditions = false;
+            Log.i("HandleParseXML","bParseOK=true");
+            
             this.bParseOK = true;
         }
     }
