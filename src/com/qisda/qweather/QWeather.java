@@ -1161,10 +1161,9 @@ public class QWeather extends Activity implements OnItemClickListener,
 
 		public void dismissProgressDialog()
 		{
-			Log.i("SearchThread", "dismissProgressDialog()");
-		
-			new Thread(){
 
+			new Thread()
+			{
 				@Override
 				public void run()
 				{
@@ -1177,11 +1176,11 @@ public class QWeather extends Activity implements OnItemClickListener,
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					Log.i("SearchThread", "dismissProgressDialog()");
 					progressDialog.dismiss();
-					
 				}
-			};
-			
+			}.start();
+
 		}
 
 	}
