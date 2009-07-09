@@ -1,7 +1,10 @@
+
 @20090709
 Percy.Peng@qisda.com
 Description:
-Add SearchThread extends AsyncTask to get the data from the network while showing a ProgressDialog.
+1.Add SearchThread extends AsyncTask to get the data from the network while showing a ProgressDialog.
+2.Add synchronized(context),then the getting data thread do the work before
+running other code.
 
 @20090702
 Percy.Peng@qisda.com
