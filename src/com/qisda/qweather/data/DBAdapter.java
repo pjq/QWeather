@@ -1,3 +1,4 @@
+
 package com.qisda.qweather.data;
 
 import android.R.string;
@@ -10,267 +11,238 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.text.StaticLayout;
 
-public class DBAdapter
-{
-	public final static String	KEYID				= "_id";
-	public final static String	TOTRANSLATETEXT		= "ToTranslateText";
-	public final static String	TRANSLATEDTEXT		= "TranslatedText";
+public class DBAdapter {
+    public final static String KEYID = "_id";
 
-	public final static String	TABLENAME			= "WeatherDataTable";
-	public final static String	DATABASENAME		= "QWeatherDataBase";
-	public final static int		DATABASEVERSION		= 1;
+    public final static String TOTRANSLATETEXT = "ToTranslateText";
 
-	// CurrentConditionsData;
-	private String				currentcondition;
-	private String				temp_f;
-	private String				temp_c;
-	private String				humidity;
-	private String				currenticon;
-	private String				wind_condition;
+    public final static String TRANSLATEDTEXT = "TranslatedText";
 
-	// ForecastConditionsData
-	private String				day_of_week;
-	private int					lowTemp;
-	private int					highTemp;
-	private String				foreicon;
-	private String				forecondition;
+    public final static String TABLENAME = "WeatherDataTable";
 
-	// Forecast Info
-	public final static String	CITY				= "city";
-	public final static String	POSTALCODE			= "postal_code";
-	public final static String	LATITUDE			= "latitude_e6";
-	public final static String	LONGITUDE			= "longitude_e6";
-	public final static String	FORECASTDATE		= "forecast_date";
-	public final static String	CURRENTDATETIME		= "current_date_time";
-	public final static String	UNITSYSTEM			= "unit_system";
+    public final static String DATABASENAME = "QWeatherDataBase";
 
-	// CurrentCOnditionsData
-	public final static String	CURRENTCONDITION	= "currentcondition";
-	public final static String	TEMPF				= "temp_f";
-	public final static String	TEMPC				= "temp_c";
-	public final static String	HUMIDITY			= "humidity";
-	public final static String	CURRENTICON			= "currenticon";
-	public final static String	WINDCONDITION		= "wind_condition";
+    public final static int DATABASEVERSION = 1;
 
-	// ForecastConditionsData1
-	public final static String	DAYOFWEEK1			= "day_of_week1";
-	public final static String	LOWTEMP1			= "lowTemp1";
-	public final static String	HIGHTEMP1			= "highTemp1";
-	public final static String	FOREICON1			= "foreicon1";
-	public final static String	FORECONDITION1		= "forecondition1";
-	// ForecastConditionsData2
-	public final static String	DAYOFWEEK2			= "day_of_week2";
-	public final static String	LOWTEMP2			= "lowTemp2";
-	public final static String	HIGHTEMP2			= "highTemp2";
-	public final static String	FOREICON2			= "foreicon2";
-	public final static String	FORECONDITION2		= "forecondition2";
-	// ForecastConditionsData3
-	public final static String	DAYOFWEEK3			= "day_of_week3";
-	public final static String	LOWTEMP3			= "lowTemp3";
-	public final static String	HIGHTEMP3			= "highTemp3";
-	public final static String	FOREICON3			= "foreicon3";
-	public final static String	FORECONDITION3		= "forecondition3";
-	// ForecastConditionsData4
-	public final static String	DAYOFWEEK4			= "day_of_week4";
-	public final static String	LOWTEMP4			= "lowTemp4";
-	public final static String	HIGHTEMP4			= "highTemp4";
-	public final static String	FOREICON4			= "foreicon4";
-	public final static String	FORECONDITION4		= "forecondition4";
+    // CurrentConditionsData;
+    private String currentcondition;
 
-	public final static String	weatherString[]		= new String[]
-													{ CITY, POSTALCODE,
-			LATITUDE, LONGITUDE, FORECASTDATE, CURRENTDATETIME, UNITSYSTEM,
-			CURRENTCONDITION, TEMPF, TEMPC, HUMIDITY, CURRENTICON,
-			WINDCONDITION, DAYOFWEEK1, LOWTEMP1, HIGHTEMP1, FOREICON1,
-			FORECONDITION1, DAYOFWEEK2, LOWTEMP2, HIGHTEMP2, FOREICON2,
-			FORECONDITION2, DAYOFWEEK3, LOWTEMP3, HIGHTEMP3, FOREICON3,
-			FORECONDITION1, DAYOFWEEK4, LOWTEMP4, HIGHTEMP4, FOREICON4,
-			FORECONDITION4							};
+    private String temp_f;
 
-	private static final String	CREATETABLE			= "create table "
-															+ TABLENAME
-															+ " ("
-															+ KEYID
-															+ " integer primary key autoincrement,"
+    private String temp_c;
 
-															+ CITY
-															+ " text not null, "
-															+ POSTALCODE
-															+ " text not null, "
-															+ LATITUDE
-															+ " text not null, "
-															+ LONGITUDE
-															+ " text not null, "
-															+ FORECASTDATE
-															+ " text not null, "
-															+ CURRENTDATETIME
-															+ " text not null, "
-															+ UNITSYSTEM
-															+ " text not null, "
+    private String humidity;
 
-															+ CURRENTCONDITION
-															+ " text not null, "
-															+ TEMPF
-															+ " text not null, "
-															+ TEMPC
-															+ " text not null, "
-															+ HUMIDITY
-															+ " text not null, "
-															+ CURRENTICON
-															+ " text not null, "
-															+ WINDCONDITION
-															+ " text not null, "
+    private String currenticon;
 
-															+ DAYOFWEEK1
-															+ " text not null, "
-															+ LOWTEMP1
-															+ " integer, "
-															+ HIGHTEMP1
-															+ " integer, "
-															+ FOREICON1
-															+ " text not null, "
-															+ FORECONDITION1
-															+ " text not null, "
+    private String wind_condition;
 
-															+ DAYOFWEEK2
-															+ " text not null, "
-															+ LOWTEMP2
-															+ " integer, "
-															+ HIGHTEMP2
-															+ " integer, "
-															+ FOREICON2
-															+ " text not null, "
-															+ FORECONDITION2
-															+ " text not null, "
+    // ForecastConditionsData
+    private String day_of_week;
 
-															+ DAYOFWEEK3
-															+ " text not null, "
-															+ LOWTEMP3
-															+ " integer, "
-															+ HIGHTEMP3
-															+ " integer, "
-															+ FOREICON3
-															+ " text not null, "
-															+ FORECONDITION3
-															+ " text not null, "
+    private int lowTemp;
 
-															+ DAYOFWEEK4
-															+ " text not null, "
-															+ LOWTEMP4
-															+ " integer, "
-															+ HIGHTEMP4
-															+ " integer, "
-															+ FOREICON4
-															+ " text not null, "
-															+ FORECONDITION4
-															+ " text not null);";
+    private int highTemp;
 
-	private DatabaseHelper		DBHelper;
-	private SQLiteDatabase		db;
-	private Context				context;
+    private String foreicon;
 
-	public DBAdapter(Context context)
-	{
-		this.context = context;
-		this.DBHelper = new DatabaseHelper(context);
-	}
+    private String forecondition;
 
-	public static class DatabaseHelper extends SQLiteOpenHelper
-	{
+    // Forecast Info
+    public final static String CITY = "city";
 
-		// public DatabaseHelper(Context context, String name, CursorFactory
-		// factory, int version)
-		public DatabaseHelper(Context context)
-		{
-			super(context, DATABASENAME, null, DATABASEVERSION);
-			// TODO Auto-generated constructor stub
-		}
+    public final static String POSTALCODE = "postal_code";
 
-		@Override
-		public void onCreate(SQLiteDatabase db)
-		{
-			// TODO Auto-generated method stub
-			db.execSQL(CREATETABLE);
+    public final static String LATITUDE = "latitude_e6";
 
-		}
+    public final static String LONGITUDE = "longitude_e6";
 
-		@Override
-		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
-		{
-			// TODO Auto-generated method stub
+    public final static String FORECASTDATE = "forecast_date";
 
-		}
+    public final static String CURRENTDATETIME = "current_date_time";
 
-	}
+    public final static String UNITSYSTEM = "unit_system";
 
-	public void open() throws SQLException
-	{
-		db = this.DBHelper.getWritableDatabase();
-		// return this;
-	}
+    // CurrentCOnditionsData
+    public final static String CURRENTCONDITION = "currentcondition";
 
-	public void close()
-	{
-		DBHelper.close();
-	}
+    public final static String TEMPF = "temp_f";
 
-	public long insertItem(ContentValues contentValues)
-	{
-		// ContentValues contentValues = new ContentValues();
-		// contentValues.put(TOTRANSLATETEXT, fromText);
-		// contentValues.put(TRANSLATEDTEXT, toText);
-		return db.insert(TABLENAME, null, contentValues);
-	}
+    public final static String TEMPC = "temp_c";
 
-	public Cursor getItem(long id)
-	{
-		// db.query(TABLENAME, new String[]{}, selection, selectionArgs,
-		// groupBy, having, orderBy);
-		try
-		{
-			Cursor mCursor = db.query(TABLENAME, weatherString, KEYID + "="
-					+ id, null, null, null, null);
+    public final static String HUMIDITY = "humidity";
 
-			if (mCursor != null)
-			{
-				mCursor.moveToFirst();
-			}
-			return mCursor;
-		} catch (SQLException e)
-		{
-			// TODO: handle exception
-			return null;
-		}
-	}
+    public final static String CURRENTICON = "currenticon";
 
-	public Cursor getItem(String city)
-	{
-		// db.query(TABLENAME, new String[]{}, selection, selectionArgs,
-		// groupBy, having, orderBy);
-		try
-		{
+    public final static String WINDCONDITION = "wind_condition";
 
-			Cursor mCursor = db.query(TABLENAME, new String[]{"city"}, CITY + "="
-					+ "'" + city + "'", null, null, null, null);
+    // ForecastConditionsData1
+    public final static String DAYOFWEEK1 = "day_of_week1";
 
-			if (mCursor != null)
-			{
-				mCursor.moveToFirst();
-			}
-			return mCursor;
-		} catch (Exception e)
-		{
-			// TODO: handle exception
-			return null;
-		}
-	}
+    public final static String LOWTEMP1 = "lowTemp1";
 
-	public Cursor getAllItem() throws SQLException
-	{
-		Cursor mCursor = db.query(TABLENAME, weatherString, null, null, null,
-				null, null);
+    public final static String HIGHTEMP1 = "highTemp1";
 
-		return mCursor;
-	}
+    public final static String FOREICON1 = "foreicon1";
+
+    public final static String FORECONDITION1 = "forecondition1";
+
+    // ForecastConditionsData2
+    public final static String DAYOFWEEK2 = "day_of_week2";
+
+    public final static String LOWTEMP2 = "lowTemp2";
+
+    public final static String HIGHTEMP2 = "highTemp2";
+
+    public final static String FOREICON2 = "foreicon2";
+
+    public final static String FORECONDITION2 = "forecondition2";
+
+    // ForecastConditionsData3
+    public final static String DAYOFWEEK3 = "day_of_week3";
+
+    public final static String LOWTEMP3 = "lowTemp3";
+
+    public final static String HIGHTEMP3 = "highTemp3";
+
+    public final static String FOREICON3 = "foreicon3";
+
+    public final static String FORECONDITION3 = "forecondition3";
+
+    // ForecastConditionsData4
+    public final static String DAYOFWEEK4 = "day_of_week4";
+
+    public final static String LOWTEMP4 = "lowTemp4";
+
+    public final static String HIGHTEMP4 = "highTemp4";
+
+    public final static String FOREICON4 = "foreicon4";
+
+    public final static String FORECONDITION4 = "forecondition4";
+
+    public final static String weatherString[] = new String[] {
+            CITY, POSTALCODE, LATITUDE, LONGITUDE, FORECASTDATE, CURRENTDATETIME, UNITSYSTEM,
+            CURRENTCONDITION, TEMPF, TEMPC, HUMIDITY, CURRENTICON, WINDCONDITION, DAYOFWEEK1,
+            LOWTEMP1, HIGHTEMP1, FOREICON1, FORECONDITION1, DAYOFWEEK2, LOWTEMP2, HIGHTEMP2,
+            FOREICON2, FORECONDITION2, DAYOFWEEK3, LOWTEMP3, HIGHTEMP3, FOREICON3, FORECONDITION1,
+            DAYOFWEEK4, LOWTEMP4, HIGHTEMP4, FOREICON4, FORECONDITION4
+    };
+
+    private static final String CREATETABLE = "create table " + TABLENAME + " (" + KEYID
+            + " integer primary key autoincrement,"
+
+            + CITY + " text not null, " + POSTALCODE + " text not null, " + LATITUDE
+            + " text not null, " + LONGITUDE + " text not null, " + FORECASTDATE
+            + " text not null, " + CURRENTDATETIME + " text not null, " + UNITSYSTEM
+            + " text not null, "
+
+            + CURRENTCONDITION + " text not null, " + TEMPF + " text not null, " + TEMPC
+            + " text not null, " + HUMIDITY + " text not null, " + CURRENTICON + " text not null, "
+            + WINDCONDITION + " text not null, "
+
+            + DAYOFWEEK1 + " text not null, " + LOWTEMP1 + " integer, " + HIGHTEMP1 + " integer, "
+            + FOREICON1 + " text not null, " + FORECONDITION1 + " text not null, "
+
+            + DAYOFWEEK2 + " text not null, " + LOWTEMP2 + " integer, " + HIGHTEMP2 + " integer, "
+            + FOREICON2 + " text not null, " + FORECONDITION2 + " text not null, "
+
+            + DAYOFWEEK3 + " text not null, " + LOWTEMP3 + " integer, " + HIGHTEMP3 + " integer, "
+            + FOREICON3 + " text not null, " + FORECONDITION3 + " text not null, "
+
+            + DAYOFWEEK4 + " text not null, " + LOWTEMP4 + " integer, " + HIGHTEMP4 + " integer, "
+            + FOREICON4 + " text not null, " + FORECONDITION4 + " text not null);";
+
+    private DatabaseHelper DBHelper;
+
+    private SQLiteDatabase db;
+
+    private Context context;
+
+    public DBAdapter(Context context) {
+        this.context = context;
+        this.DBHelper = new DatabaseHelper(context);
+    }
+
+    public static class DatabaseHelper extends SQLiteOpenHelper {
+
+        // public DatabaseHelper(Context context, String name, CursorFactory
+        // factory, int version)
+        public DatabaseHelper(Context context) {
+            super(context, DATABASENAME, null, DATABASEVERSION);
+            // TODO Auto-generated constructor stub
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            // TODO Auto-generated method stub
+            db.execSQL(CREATETABLE);
+
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            // TODO Auto-generated method stub
+
+        }
+
+    }
+
+    public void open() throws SQLException {
+        db = this.DBHelper.getWritableDatabase();
+        // return this;
+    }
+
+    public void close() {
+        DBHelper.close();
+    }
+
+    public long insertItem(ContentValues contentValues) {
+        // ContentValues contentValues = new ContentValues();
+        // contentValues.put(TOTRANSLATETEXT, fromText);
+        // contentValues.put(TRANSLATEDTEXT, toText);
+        return db.insert(TABLENAME, null, contentValues);
+    }
+
+    public Cursor getItem(long id) {
+        // db.query(TABLENAME, new String[]{}, selection, selectionArgs,
+        // groupBy, having, orderBy);
+        try {
+            Cursor mCursor = db.query(TABLENAME, weatherString, KEYID + "=" + id, null, null, null,
+                    null);
+
+            if (mCursor != null) {
+                mCursor.moveToFirst();
+            }
+            return mCursor;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            return null;
+        }
+    }
+
+    public Cursor getItem(String city) {
+        // db.query(TABLENAME, new String[]{}, selection, selectionArgs,
+        // groupBy, having, orderBy);
+        try {
+
+            Cursor mCursor = db.query(TABLENAME, new String[] {
+                "city"
+            }, CITY + "=" + "'" + city + "'", null, null, null, null);
+
+            if (mCursor != null) {
+                mCursor.moveToFirst();
+            }
+            return mCursor;
+        } catch (Exception e) {
+            // TODO: handle exception
+            return null;
+        }
+    }
+
+    public Cursor getAllItem() throws SQLException {
+        Cursor mCursor = db.query(TABLENAME, weatherString, null, null, null, null, null);
+
+        return mCursor;
+    }
 
 }

@@ -1,78 +1,71 @@
+
 package com.qisda.qweather.data;
 
-public class CurrentConditionsData
-{
-	/*
-	 * These variables name are named according to the XML.
-	 */
-	private String	condition;
-	private String	temp_f;
-	private String	temp_c;
-	private String	humidity;
-	private String	icon;
-	private String	wind_condition;
+public class CurrentConditionsData {
+    /*
+     * These variables name are named according to the XML.
+     */
+    private String condition;
 
-	/*
-	 * Setter and Getter
-	 */
-	public String getCondition()
-	{
-		return this.condition;
-	}
+    private String temp_f;
 
-	public void setCondition(String condition)
-	{
-		this.condition = condition;
-	}
+    private String temp_c;
 
-	public String getTempF()
-	{
-		return this.temp_f;
-	}
+    private String humidity;
 
-	public void setTempF(String tempF)
-	{
-		this.temp_f = tempF;
-	}
+    private String icon;
 
-	public String getTempC()
-	{
-		return this.temp_c;
-	}
+    private String wind_condition;
 
-	public void setTempC(String tempC)
-	{
-		this.temp_c = tempC;
-	}
+    /*
+     * Setter and Getter
+     */
+    public String getCondition() {
+        return this.condition;
+    }
 
-	public String getHumidity()
-	{
-		return this.humidity;
-	}
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
 
-	public void setHumidity(String humidity)
-	{
-		this.humidity = humidity;
-	}
+    public String getTempF() {
+        return this.temp_f;
+    }
 
-	public String getIcon()
-	{
-		return this.icon;
-	}
+    public void setTempF(String tempF) {
+        this.temp_f = tempF;
+    }
 
-	public void setIcon(String icon)
-	{
-		this.icon = icon;
-	}
+    public String getTempC() {
+        return this.temp_c;
+    }
 
-	public String getWindCondition()
-	{
-		return this.wind_condition;
-	}
+    public void setTempC(String tempC) {
+        this.temp_c = tempC;
+    }
 
-	public void setWindCondition(String wind_condition)
-	{
-		this.wind_condition = wind_condition;
-	}
+    public String getHumidity() {
+        return this.humidity;
+    }
+
+    public void setHumidity(String humidity) {
+        this.humidity = humidity;
+    }
+
+    public String getIcon() {
+        return this.icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getWindCondition() {
+        return this.wind_condition;
+    }
+
+    public void setWindCondition(String wind_condition) {
+        this.wind_condition = wind_condition;
+    }
 
 }

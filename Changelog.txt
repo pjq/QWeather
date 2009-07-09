@@ -1,3 +1,21 @@
+@20090709
+Percy.Peng@qisda.com
+Description:
+Add SearchThread extends AsyncTask to get the data from the network while showing a ProgressDialog.
+
+@20090702
+Percy.Peng@qisda.com
+Description:
+The weather data from google sometimes seems changed.The weather icon of current condition
+may be null.So if it is null,use the first day's weather icon to replace it.
+
+@20090624
+Percy.Peng@qisda.com
+Description:
+Skip to recreate the singelweatherinfoview,when refresh the weather gallery,it will
+improve the application's peformance.
+
+
 @20090613
 Percy.Peng@qisda.com
 Description:

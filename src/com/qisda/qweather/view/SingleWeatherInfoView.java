@@ -1,3 +1,4 @@
+
 package com.qisda.qweather.view;
 
 import java.io.BufferedInputStream;
@@ -19,110 +20,99 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
-public class SingleWeatherInfoView extends LinearLayout
-{
+public class SingleWeatherInfoView extends LinearLayout {
 
-	private ImageView	imageView	= null;
-	private TextView	tempText	= null;
-	private TextView	dayOfWeek	= null;
-	private final int	WIDTH		= 90;
+    private ImageView imageView = null;
 
-	public SingleWeatherInfoView(Context context)
-	{
-		super(context);
-		this.imageView = new ImageView(context);
+    private TextView tempText = null;
 
-		/*
-		 * Setup the textView that will show the temperature.
-		 */
-		this.tempText = new TextView(context);
-		this.tempText.setText("Temp:H   L   ");
-		this.tempText.setTextSize(16);
-		this.tempText.setTypeface(Typeface.create("Tahoma", Typeface.BOLD));
+    private TextView dayOfWeek = null;
 
-		this.dayOfWeek = new TextView(context);
-		this.dayOfWeek.setText("Day of Week");
+    private final int WIDTH = 90;
 
-		/*
-		 * setOrientation
-		 */
-		this.setOrientation(LinearLayout.VERTICAL);
+    public SingleWeatherInfoView(Context context) {
+        super(context);
+        this.imageView = new ImageView(context);
 
-		this.addView(this.dayOfWeek, new LinearLayout.LayoutParams(
-				LayoutParams.FILL_PARENT, 20));
-		/*
-		 * Set the text to display in center:0x11.
-		 */
-		this.dayOfWeek.setGravity(0x11);
+        /*
+         * Setup the textView that will show the temperature.
+         */
+        this.tempText = new TextView(context);
+        this.tempText.setText("Temp:H   L   ");
+        this.tempText.setTextSize(16);
+        this.tempText.setTypeface(Typeface.create("Tahoma", Typeface.BOLD));
 
-		/*
-		 * Add the item to the this layout.
-		 */
-		this.addView(this.imageView, new LinearLayout.LayoutParams(WIDTH, 100));
-		this.addView(this.tempText, new LinearLayout.LayoutParams(
-				LayoutParams.FILL_PARENT, 23));
-		this.tempText.setGravity(0x11);
-		this.setPadding(15, 0, 15, 0);
-	}
+        this.dayOfWeek = new TextView(context);
+        this.dayOfWeek.setText("Day of Week");
 
-	/*
-	 * Setter and Getter
-	 */
+        /*
+         * setOrientation
+         */
+        this.setOrientation(LinearLayout.VERTICAL);
 
-	public void setTempCelcius(int aTemp)
-	{
-		this.tempText.setText("" + aTemp + " �C");
-	}
+        this.addView(this.dayOfWeek, new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, 20));
+        /*
+         * Set the text to display in center:0x11.
+         */
+        this.dayOfWeek.setGravity(0x11);
 
-	public void setTempFahrenheit(int aTemp)
-	{
-		this.tempText.setText("" + aTemp + " �F");
-	}
+        /*
+         * Add the item to the this layout.
+         */
+        this.addView(this.imageView, new LinearLayout.LayoutParams(WIDTH, 100));
+        this.addView(this.tempText, new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, 23));
+        this.tempText.setGravity(0x11);
+        this.setPadding(15, 0, 15, 0);
+    }
 
-	public void setTempFahrenheitMinMax(int aMinTemp, int aMaxTemp)
-	{
-		this.tempText.setText("" + aMinTemp + "/" + aMaxTemp + " �F");
-	}
+    /*
+     * Setter and Getter
+     */
 
-	public void setTempCelciusMinMax(int aMinTemp, int aMaxTemp)
-	{
-		this.tempText.setText("" + aMinTemp + "/" + aMaxTemp + " �C");
-	}
+    public void setTempCelcius(int aTemp) {
+        this.tempText.setText("" + aTemp + " �C");
+    }
 
-	public void setTempString(String aTempString)
-	{
-		this.tempText.setText(aTempString);
-	}
+    public void setTempFahrenheit(int aTemp) {
+        this.tempText.setText("" + aTemp + " �F");
+    }
 
-	public void setImageResId(int resid)
-	{
-		this.imageView.setBackgroundResource(resid);
+    public void setTempFahrenheitMinMax(int aMinTemp, int aMaxTemp) {
+        this.tempText.setText("" + aMinTemp + "/" + aMaxTemp + " �F");
+    }
 
-	}
+    public void setTempCelciusMinMax(int aMinTemp, int aMaxTemp) {
+        this.tempText.setText("" + aMinTemp + "/" + aMaxTemp + " �C");
+    }
 
-	public void setBitmap(Bitmap bm)
-	{
-		this.imageView.setDrawingCacheEnabled(true);
-		this.imageView.setImageBitmap(bm);
-	}
+    public void setTempString(String aTempString) {
+        this.tempText.setText(aTempString);
+    }
 
-	public Bitmap getBitmap()
-	{
-		return this.imageView.getDrawingCache();
-	}
+    public void setImageResId(int resid) {
+        this.imageView.setBackgroundResource(resid);
 
-	public void setDayOfWeek(String day)
-	{
-		this.dayOfWeek.setText(day);
-	}
+    }
 
-	/*
-	 * I want to change the color but it seems no effect,Anybody has any idea
-	 * about this?
-	 */
-	public void setTextColor(int color)
-	{
-		this.tempText.setTextColor(color);
-		this.dayOfWeek.setTextColor(color);
-	}
+    public void setBitmap(Bitmap bm) {
+        this.imageView.setDrawingCacheEnabled(true);
+        this.imageView.setImageBitmap(bm);
+    }
+
+    public Bitmap getBitmap() {
+        return this.imageView.getDrawingCache();
+    }
+
+    public void setDayOfWeek(String day) {
+        this.dayOfWeek.setText(day);
+    }
+
+    /*
+     * I want to change the color but it seems no effect,Anybody has any idea
+     * about this?
+     */
+    public void setTextColor(int color) {
+        this.tempText.setTextColor(color);
+        this.dayOfWeek.setTextColor(color);
+    }
 }

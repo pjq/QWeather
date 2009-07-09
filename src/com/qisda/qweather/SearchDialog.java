@@ -1,3 +1,4 @@
+
 package com.qisda.qweather;
 
 import java.util.ArrayList;
@@ -20,101 +21,95 @@ import android.view.*;
 import android.view.KeyEvent.*;
 import android.view.KeyEvent;
 
-public class SearchDialog extends Activity implements OnClickListener,
-		OnKeyListener
-{
-	private AutoCompleteTextView	inputCity;
-	private ImageButton				searchButton;
-	public static final String		WEATHERDATA	= "WeatherData";
-	private ArrayList<String>		arrayList;
+public class SearchDialog extends Activity implements OnClickListener, OnKeyListener {
+    private AutoCompleteTextView inputCity;
 
-	public void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
+    private ImageButton searchButton;
 
-		setContentView(R.layout.searchdialog);
-		searchButton = (ImageButton) findViewById(R.id.searchDialogButton);
-		arrayList = new ArrayList<String>();
-		Cursor cursor = QWeather.dbAdapter.getAllItem();
-		int index = cursor.getColumnIndex(DBAdapter.CITY);
-		String city;
-		if (cursor.moveToFirst())
-		{
-			do
-			{
-				city = cursor.getString(index);
-				arrayList.add(city);
-				Log.i("SearchDialog", city);
+    public static final String WEATHERDATA = "WeatherData";
 
-			} while (cursor.moveToNext());
-		}
+    private ArrayList<String> arrayList;
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_dropdown_item_1line, arrayList);
-		inputCity = (AutoCompleteTextView) findViewById(R.id.searchDialogInput);
-		inputCity.setAdapter(adapter);
-		inputCity.setOnKeyListener(this);
-		// inputCity.setFocusable(true);
-		searchButton.setOnClickListener(this);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-	}
+        setContentView(R.layout.searchdialog);
+        searchButton = (ImageButton)findViewById(R.id.searchDialogButton);
+        arrayList = new ArrayList<String>();
+        Cursor cursor = QWeather.dbAdapter.getAllItem();
+        int index = cursor.getColumnIndex(DBAdapter.CITY);
+        String city;
+        if (cursor.moveToFirst()) {
+            do {
+                city = cursor.getString(index);
+                arrayList.add(city);
+                Log.i("SearchDialog", city);
 
-	@Override
-	public void onClick(View v)
-	{
-		switch (v.getId())
-		{
-		case R.id.searchDialogButton:
-			String cityName = inputCity.getText().toString();
-			Intent intent = new Intent();
-			Bundle bundle = new Bundle();
-			bundle.putString("city", cityName);
-			intent.putExtras(bundle);
-			setResult(RESULT_OK, intent);
-			SearchDialog.this.finish();
-			break;
+            } while (cursor.moveToNext());
+        }
 
-		case R.id.searchDialogInput:
-			inputCity.setText("");
-			break;
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, arrayList);
+        inputCity = (AutoCompleteTextView)findViewById(R.id.searchDialogInput);
+        inputCity.setAdapter(adapter);
+        inputCity.setOnKeyListener(this);
+        // inputCity.setFocusable(true);
+        searchButton.setOnClickListener(this);
 
-		default:
-			break;
-		}
-	}
+    }
 
-	@Override
-	public boolean onKey(View v, int keyCode, KeyEvent event)
-	{
-		switch (keyCode)
-		{
-		/*
-		 * If you press enter.
-		 */
-		case KeyEvent.KEYCODE_ENTER:
-			String cityName = inputCity.getText().toString();
-			Intent intent = new Intent();
-			Bundle bundle = new Bundle();
-			bundle.putString("city", cityName);
-			intent.putExtras(bundle);
-			setResult(RESULT_OK, intent);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.searchDialogButton:
+                String cityName = inputCity.getText().toString();
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("city", cityName);
+                intent.putExtras(bundle);
+                setResult(RESULT_OK, intent);
+                SearchDialog.this.finish();
+                break;
 
-			SearchDialog.this.finish();
-			return true;
-			// break;
+            case R.id.searchDialogInput:
+                inputCity.setText("");
+                break;
 
-		default:
-			break;
+            default:
+                break;
+        }
+    }
 
-		}
-		return false;
-	}
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            /*
+             * If you press enter.
+             */
+            case KeyEvent.KEYCODE_ENTER:
+                String cityName = inputCity.getText().toString();
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("city", cityName);
+                intent.putExtras(bundle);
+                setResult(RESULT_OK, intent);
 
-	/*
-	 * You can add more cities here.
-	 */
-	static final String[]	CITYNAMES	= new String[]
-										{ "suzhou", "shanghai", "wuxi",
-			"nanjing", "wuchang", "beijing", "nanchang", "wuhang", "changzhou",
-			"xuzhou", "kunshan", "hangzhou" };
+                SearchDialog.this.finish();
+                return true;
+                // break;
+
+            default:
+                break;
+
+        }
+        return false;
+    }
+
+    /*
+     * You can add more cities here.
+     */
+    static final String[] CITYNAMES = new String[] {
+            "suzhou", "shanghai", "wuxi", "nanjing", "wuchang", "beijing", "nanchang", "wuhang",
+            "changzhou", "xuzhou", "kunshan", "hangzhou"
+    };
 }

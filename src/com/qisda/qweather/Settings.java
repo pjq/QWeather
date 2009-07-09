@@ -1,3 +1,4 @@
+
 package com.qisda.qweather;
 
 import android.app.Activity;
@@ -15,225 +16,190 @@ import android.view.KeyEvent;
  * This class is used to store the settings
  * Here is use EditTextPreference to edit and store the settings.
  * */
-public class Settings extends PreferenceActivity
-{
+public class Settings extends PreferenceActivity {
 
-	public final int			bCITY1	= 1;
-	public final int			bCITY2	= 2;
+    public final int bCITY1 = 1;
 
-	private EditTextPreference	city1;
-	private EditTextPreference	city2;
-	private PreferenceScreen	root;
+    public final int bCITY2 = 2;
 
-	public void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
+    private EditTextPreference city1;
 
-		setPreferenceScreen(createPreferenceScreen());
+    private EditTextPreference city2;
 
-	}
+    private PreferenceScreen root;
 
-	public void onStart()
-	{
-		super.onStart();
-	}
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-	public void onResume()
-	{
-		super.onResume();
-	}
+        setPreferenceScreen(createPreferenceScreen());
 
-	@Override
-	public void onPause()
-	{
-		super.onPause();
+    }
 
-	}
+    public void onStart() {
+        super.onStart();
+    }
 
-	@Override
-	public void onStop()
-	{
-		super.onStop();
+    public void onResume() {
+        super.onResume();
+    }
 
-	}
+    @Override
+    public void onPause() {
+        super.onPause();
 
-	@Override
-	public void onDestroy()
-	{
-		super.onDestroy();
+    }
 
-	}
+    @Override
+    public void onStop() {
+        super.onStop();
 
-	@Override
-	public void onRestart()
-	{
-		super.onDestroy();
+    }
 
-	}
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
 
-	public PreferenceScreen createPreferenceScreen()
-	{
-		this.root = getPreferenceManager().createPreferenceScreen(this);
+    }
 
-		this.root.setTitle(getString(R.string.setting));
+    @Override
+    public void onRestart() {
+        super.onDestroy();
 
-		String city1 = getString(R.string.city1);
-		String city2 = getString(R.string.city2);
+    }
 
-		this.city1 = new EditTextPreference(this);
-		this.city1.setKey("city1");
-		this.city1.setTitle(city1);
-		this.city1.setDialogTitle(city1);
-		this.city1.getEditText().setOnKeyListener(new View.OnKeyListener()
-		{
-			public boolean onKey(View v, int keyCode, KeyEvent keyEvent)
-			{
-				updateDisplaySettings(bCITY1);
-				switch (keyCode)
-				{
-				case KeyEvent.KEYCODE_ENTER:
-					return true;
-				default:
-					break;
+    public PreferenceScreen createPreferenceScreen() {
+        this.root = getPreferenceManager().createPreferenceScreen(this);
 
-				}
-				return false;
-			}
-		});
+        this.root.setTitle(getString(R.string.setting));
 
-		this.city2 = new EditTextPreference(this);
-		this.city2.setKey("city2");
-		this.city2.setTitle(city2);
-		this.city2.setDialogTitle(city2);
-		this.city2.getEditText().setOnKeyListener(new View.OnKeyListener()
-		{
-			public boolean onKey(View v, int keyCode, KeyEvent keyEvent)
-			{
-				// updateDisplaySettings(bCITY2);
-				switch (keyCode)
-				{
-				case KeyEvent.KEYCODE_ENTER:
-					return true;
-				default:
-					break;
+        String city1 = getString(R.string.city1);
+        String city2 = getString(R.string.city2);
 
-				}
-				return false;
-			}
-		});
+        this.city1 = new EditTextPreference(this);
+        this.city1.setKey("city1");
+        this.city1.setTitle(city1);
+        this.city1.setDialogTitle(city1);
+        this.city1.getEditText().setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent keyEvent) {
+                updateDisplaySettings(bCITY1);
+                switch (keyCode) {
+                    case KeyEvent.KEYCODE_ENTER:
+                        return true;
+                    default:
+                        break;
 
-		this.city1.getEditText().addTextChangedListener(new TextWatcher()
-		{
+                }
+                return false;
+            }
+        });
 
-			@Override
-			public void afterTextChanged(Editable s)
-			{
-				// TODO Auto-generated method stub
-				updateDisplaySettings(bCITY1);
+        this.city2 = new EditTextPreference(this);
+        this.city2.setKey("city2");
+        this.city2.setTitle(city2);
+        this.city2.setDialogTitle(city2);
+        this.city2.getEditText().setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent keyEvent) {
+                // updateDisplaySettings(bCITY2);
+                switch (keyCode) {
+                    case KeyEvent.KEYCODE_ENTER:
+                        return true;
+                    default:
+                        break;
 
-			}
+                }
+                return false;
+            }
+        });
 
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after)
-			{
-				// TODO Auto-generated method stub
+        this.city1.getEditText().addTextChangedListener(new TextWatcher() {
 
-			}
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+                updateDisplaySettings(bCITY1);
 
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count)
-			{
-				// TODO Auto-generated method stub
+            }
 
-			}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // TODO Auto-generated method stub
 
-		});
+            }
 
-		this.city2.getEditText().addTextChangedListener(new TextWatcher()
-		{
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // TODO Auto-generated method stub
 
-			@Override
-			public void afterTextChanged(Editable s)
-			{
-				// TODO Auto-generated method stub
-				updateDisplaySettings(bCITY2);
+            }
 
-			}
+        });
 
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after)
-			{
-				// TODO Auto-generated method stub
+        this.city2.getEditText().addTextChangedListener(new TextWatcher() {
 
-			}
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+                updateDisplaySettings(bCITY2);
 
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count)
-			{
-				// TODO Auto-generated method stub
+            }
 
-			}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // TODO Auto-generated method stub
 
-		});
+            }
 
-		this.root.addPreference(this.city1);
-		this.root.addPreference(this.city2);
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // TODO Auto-generated method stub
 
-		this.city1.setSummary(getPreferences("city1"));
-		this.city2.setSummary(getPreferences("city2"));
+            }
 
-		return this.root;
+        });
 
-	}
+        this.root.addPreference(this.city1);
+        this.root.addPreference(this.city2);
 
-	public void updateDisplaySettings(int city)
-	{
-		switch (city)
-		{
-		case 1:
-			String text1 = this.city1.getEditText().getText().toString();
-			if (text1 == "")
-			{
-				this.city1.setSummary(getString(R.string.notSet));
-			} else
-			{
-				this.city1.setSummary(text1);
-			}
+        this.city1.setSummary(getPreferences("city1"));
+        this.city2.setSummary(getPreferences("city2"));
 
-			break;
-		case 2:
-			String text2 = this.city2.getEditText().getText().toString();
-			if (text2 == "")
-			{
-				this.city2.setSummary(getString(R.string.notSet));
-			} else
-			{
-				this.city2.setSummary(text2);
-			}
-			break;
-		default:
-			break;
-		}
+        return this.root;
 
-	}
+    }
 
-	public String getPreferences(String keyCode)
-	{
-		SharedPreferences settings = PreferenceManager
-				.getDefaultSharedPreferences(this);
-		String preferences = settings.getString(keyCode,
-				getString(R.string.notSet));
-		if (preferences.equals(""))
-		{
-			return getString(R.string.notSet);
-		} else
-		{
-			return preferences;
-		}
-	}
+    public void updateDisplaySettings(int city) {
+        switch (city) {
+            case 1:
+                String text1 = this.city1.getEditText().getText().toString();
+                if (text1 == "") {
+                    this.city1.setSummary(getString(R.string.notSet));
+                } else {
+                    this.city1.setSummary(text1);
+                }
+
+                break;
+            case 2:
+                String text2 = this.city2.getEditText().getText().toString();
+                if (text2 == "") {
+                    this.city2.setSummary(getString(R.string.notSet));
+                } else {
+                    this.city2.setSummary(text2);
+                }
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    public String getPreferences(String keyCode) {
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        String preferences = settings.getString(keyCode, getString(R.string.notSet));
+        if (preferences.equals("")) {
+            return getString(R.string.notSet);
+        } else {
+            return preferences;
+        }
+    }
 
 }

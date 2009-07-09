@@ -1,54 +1,48 @@
+
 package com.qisda.qweather.data;
 
 import java.util.ArrayList;
 
-public class WeatherData
-{
-	/*
-	 * These variables name are named according to the XML.
-	 */
-	private CurrentConditionsData				currentCondition	= null;
-	private ForecastInformationData				forecastInformation	= null;
+public class WeatherData {
+    /*
+     * These variables name are named according to the XML.
+     */
+    private CurrentConditionsData currentCondition = null;
 
-	/*
-	 * The ArrayList is used to store the parsed 4 days weather information
-	 */
-	private ArrayList<ForecastConditionsData>	forecastConditions	= new ArrayList<ForecastConditionsData>(
-																			4);
+    private ForecastInformationData forecastInformation = null;
 
-	/*
-	 * Setter and Getter
-	 */
-	public CurrentConditionsData getCurrentConditionsData()
-	{
-		return this.currentCondition;
-	}
+    /*
+     * The ArrayList is used to store the parsed 4 days weather information
+     */
+    private ArrayList<ForecastConditionsData> forecastConditions = new ArrayList<ForecastConditionsData>(
+            4);
 
-	public void setCurrentConditionsData(CurrentConditionsData currentCondition)
-	{
-		this.currentCondition = currentCondition;
-	}
+    /*
+     * Setter and Getter
+     */
+    public CurrentConditionsData getCurrentConditionsData() {
+        return this.currentCondition;
+    }
 
-	public ForecastInformationData getForecastInformationData()
-	{
-		return this.forecastInformation;
-	}
+    public void setCurrentConditionsData(CurrentConditionsData currentCondition) {
+        this.currentCondition = currentCondition;
+    }
 
-	public void setForecastInformationData(
-			ForecastInformationData forecastInformation)
-	{
-		this.forecastInformation = forecastInformation;
-	}
+    public ForecastInformationData getForecastInformationData() {
+        return this.forecastInformation;
+    }
 
-	public ArrayList<ForecastConditionsData> getForecastConditionsData()
-	{
-		return this.forecastConditions;
-	}
+    public void setForecastInformationData(ForecastInformationData forecastInformation) {
+        this.forecastInformation = forecastInformation;
+    }
 
-	public ForecastConditionsData getLastForecastConditionsData()
-	{
-		int size = this.forecastConditions.size();
-		return this.forecastConditions.get(size - 1);
-	}
+    public ArrayList<ForecastConditionsData> getForecastConditionsData() {
+        return this.forecastConditions;
+    }
+
+    public ForecastConditionsData getLastForecastConditionsData() {
+        int size = this.forecastConditions.size();
+        return this.forecastConditions.get(size - 1);
+    }
 
 }
