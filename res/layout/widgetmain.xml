@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/widget28"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
+	<LinearLayout android:id="@+id/widget38"
+		android:layout_width="100px" android:layout_height="100px"
+		android:orientation="vertical">
+		<LinearLayout android:id="@+id/widget39"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			
+			android:orientation="vertical">
+			<TextView android:id="@+id/cityTextView"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:gravity="center"
+				android:text="City:">   
+			</TextView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/widget58"
+			android:layout_width="fill_parent" android:layout_height="65px"
+		
+			android:orientation="vertical">
+			<ImageView android:id="@+id/currentImageView"
+				android:layout_width="fill_parent" android:layout_height="fill_parent">
+			</ImageView>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/widget76"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+	
+			android:orientation="vertical">
+			<TextView android:id="@+id/conditionTextView"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+			
+				android:text="Condition" android:gravity="center">
+			</TextView>
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>

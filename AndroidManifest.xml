@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.qisda.qweather" android:versionCode="1"
 	android:versionName="1.0">
-	<application android:icon="@drawable/qweathericon"
+	<application android:icon="@drawable/qweatherwidgeticon"
 		android:label="@string/QWeather">
 		<activity android:name=".QWeather" android:label="@string/app_name">
 			<intent-filter>
@@ -15,7 +15,27 @@
 		</activity>
 		<activity android:name=".Settings" android:label="@string/searchDialog">
 		</activity>
+		<receiver android:name="com.qisda.qweatherwidget.QWeatherWidget"
+			android:icon="@drawable/qweatherwidgeticon" android:label="@string/qweatherwidget_name">
+			<meta-data android:name="android.appwidget.provider"
+				android:resource="@xml/qweatherwidgetprovider" />
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+			</intent-filter>
+		</receiver>
+		<receive android:name=".QWeatherWidgetBroadcastReceiver"></receive>
+		<activity android:name="com.qisda.qweatherwidget.WidgetConfigure"
+			android:theme="@android:style/Theme.Dialog">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+			</intent-filter>
+		</activity>
+		<service android:name="com.qisda.qweatherwidget.UpdateService">
+			<intent-filter>
+				<action android:name="com.qisda.qweatherwidget.UpdateService" />
+			</intent-filter>
+		</service>
 	</application>
 	<uses-sdk android:minSdkVersion="3" />
-	<uses-permission android:name="android.permission.INTERNET" />   
+	<uses-permission android:name="android.permission.INTERNET" />
 </manifest>                 

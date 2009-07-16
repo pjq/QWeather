@@ -150,7 +150,7 @@ public class QWeather extends Activity implements OnItemClickListener,
 	// Just edit it if you are not at office
 	// true:if at office
 	// flase:if not at office
-	public static boolean			bAtOffice			= false;
+	public static boolean			bAtOffice			= true;
 
 	public static String			googleWeatherURL	= "http://www.google.com/ig/api?weather=";
 

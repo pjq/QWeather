@@ -1,3 +1,10 @@
+@20090716
+Percy.Peng@qisda.com
+Description:
+1.Add the QWeatherWidget,you can add it to the Desktop
+2.Now I can't bind a listener to the RemoteViews,It seems so strange.So I can't do 
+any more in the AppWidget Configure:
+such as change the city name or show next 4 day weather information.
 
 @20090709
 Percy.Peng@qisda.com

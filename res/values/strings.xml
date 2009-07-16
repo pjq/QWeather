@@ -26,5 +26,12 @@
 	<string name="tempText">Temp</string>
 	<string name="searchingText">Searching:</string>
 	<string name="waitText">Please wait...</string>
+	<string name="OK_BUTTON">OK</string>
+	<string name="inputcityname">Enter the city:</string>
+	<string name="notset">Not set</string>
+	<string name="refresh">Refreshing</string>
+	<string name="refreshError">Refresh Error!!</string>
+	<string name="qweatherwidget_name">QWeatherWidget</string>
+	
 
 </resources>
